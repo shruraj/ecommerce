@@ -69,7 +69,7 @@ def completeOrder(request):
     order.last_name = request.POST['last_name']
     order.address = request.POST['address']
     order.city = request.POST['city']
-    order.payment_method = request.POST['payment_method']
+    order.payment_method = request.POST['payment']
     order.payment_data = request.POST['payment_data']
     order.save()
     order.items = genItemsList(cart)
@@ -86,7 +86,7 @@ def adminLogin(request):
             login(request,user)
             return redirect("admin")
         else:
-            return render(request, "admin_login", {'login':false})
+            return render(request, "admin_login", {'login':False})
 
     return render(request, "admin_login.html", None)
 
